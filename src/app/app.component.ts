@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Pizza } from './models/pizza.model';
 import { User } from './models/user.model';
+import { Ingredient } from './models/ingredient';
 
 const PIZZAS : Pizza[] = [
   { id: 1, name: 'Reine', price: 12 },
@@ -30,6 +31,10 @@ export class AppComponent {
   pizzas: Pizza[] = PIZZAS;
 
   user: User = new User('Mota', 'Matthieu', '1991-11-18', 'https://...');
+  ingredients: Ingredient[] = [
+    { name: 'Tomate', image: 'https://...', weight: 20, price: 0.50 },
+    { name: 'Avocat', image: 'https://...', weight: 60, price: 1.50 }
+  ];
 
   // Quand on clique sur une pizza
   onSelect(pizza: Pizza) {
