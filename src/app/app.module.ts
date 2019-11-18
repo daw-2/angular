@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { PizzaComponent } from './pizza/pizza.component';
 import { AuthorComponent } from './author/author.component';
 import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PizzaComponent,
     AuthorComponent,
-    IngredientListComponent
+    IngredientListComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
