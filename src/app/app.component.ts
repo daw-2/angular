@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-
-class Pizza {
-  id: number;
-  name: string;
-  price: number;
-  image?: string;
-}
+import { Pizza } from './models/pizza.model';
 
 const PIZZAS : Pizza[] = [
   { id: 1, name: 'Reine', price: 12 },
@@ -20,6 +14,10 @@ const PIZZAS : Pizza[] = [
   styles: [`
     li:hover {
       cursor: pointer;
+    }
+    .selected {
+      font-weight: bold;
+      color: red;
     }
   `]
 })

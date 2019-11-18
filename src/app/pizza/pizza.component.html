@@ -1,0 +1,7 @@
+<div *ngIf="selectedPizza">
+    <div>Id: {{ selectedPizza?.id }}</div>
+    <div>Name: {{ selectedPizza?.name }}</div>
+    <div>Price: {{ selectedPizza?.price }}</div>
+    <img [src]="selectedPizza.image">
+    <input [(ngModel)]="selectedPizza.name">
+</div>
