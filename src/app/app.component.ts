@@ -16,26 +16,23 @@ const PIZZAS : Pizza[] = [
 
 @Component({
   selector: 'app-root',
-  template: `
-    <h1>{{ title }}</h1>
-    <h2>{{ name }}</h2>
-    <div>Id: {{ pizza.id }}</div>
-    <div>Name: {{ pizza.name }}</div>
-    <div>Price: {{ pizza.price }}</div>
-    <img [src]="pizza.image">
-    <input [(ngModel)]="pizza.name">
-  `,
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styles: [`
+    li:hover {
+      cursor: pointer;
+    }
+  `]
 })
 export class AppComponent {
   title = 'Mon super site';
-  name: string = '4 fromages';
-  pizza: Pizza = {
-    id: 1,
-    name: 'Reine',
-    price: 12,
-    image: '/assets/img/reine.jpg'
-  };
+
+  selectedPizza: Pizza;
   // Liste de pizzas à afficher dans le composant
   pizzas: Pizza[] = PIZZAS;
+
+  // Quand on clique sur une pizza
+  onSelect(pizza: Pizza) {
+    console.log(pizza);
+    this.selectedPizza = pizza;
+  }
 }

@@ -1,7 +1,19 @@
 <h1>{{ title }}</h1>
-<h2>{{ name }}</h2>
-<div>Id: {{ pizza.id }}</div>
-<div>Name: {{ pizza.name }}</div>
-<div>Price: {{ pizza.price }}</div>
-<img [src]="pizza.image">
-<input [(ngModel)]="pizza.name">
+
+<div *ngIf="selectedPizza">
+    <div>Id: {{ selectedPizza?.id }}</div>
+    <div>Name: {{ selectedPizza?.name }}</div>
+    <div>Price: {{ selectedPizza?.price }}</div>
+    <img [src]="selectedPizza.image">
+    <input [(ngModel)]="selectedPizza.name">
+</div>
+
+<ul>
+    <li *ngFor="let pizza of pizzas; index as i"
+        (click)="onSelect(pizza)"
+    >
+        {{ i }} : {{ pizza.name }}
+    </li>
+</ul>
+
+{{ pizzas | json }}
