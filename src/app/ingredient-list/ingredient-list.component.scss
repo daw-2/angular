@@ -1,0 +1,13 @@
+.media {
+    border: 1px solid transparent;
+    transition: 0.5s;
+
+    &:hover {
+        cursor: pointer;
+        border-color: #a8a8a8;
+    }
+
+    &.selected {
+        border-color: #a8a8a8;
+    }
+}

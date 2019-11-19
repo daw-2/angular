@@ -32,19 +32,28 @@ export class AppComponent {
 
   user: User = new User('Mota', 'Matthieu', '1991-11-18', 'https://...');
   ingredients: Ingredient[] = [
-    { name: 'Tomate', image: 'https://...', weight: 20, price: 0.50 },
-    { name: 'Avocat', image: 'https://...', weight: 60, price: 1.50 }
+    { name: 'Tomate', image: 'tomato.png', weight: 20, price: 0.50 },
+    { name: 'Avocat', image: 'avocado.png', weight: 60, price: 1.50 }
   ];
 
   // Quand on clique sur une pizza
   onSelect(pizza: Pizza) {
     console.log(pizza);
+    // Si une pizza est déjà sélectionnée, on reset
+    if (this.selectedPizza) {
+      this.selectedPizza.ingredient = null;
+    }
     this.selectedPizza = pizza;
   }
 
   // Quand on reçoit l'événement de l'enfant
   unSelect(pizza: Pizza) {
     console.log(pizza);
-    this.selectedPizza = null;
+    this.selectedPizza = this.selectedPizza.ingredient = null;
+  }
+
+  // Quand on choisit un ingredient dans le composant ingredient-list
+  addIngredient(ingredient: Ingredient) {
+    this.selectedPizza.ingredient = ingredient;
   }
 }

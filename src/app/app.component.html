@@ -2,7 +2,17 @@
 <app-menu [title]="title"></app-menu>
 
 <div class="container">
-    <app-pizza [pizza]="selectedPizza" (unselected)="unSelect($event)"></app-pizza>
+    <div class="row mt-5" *ngIf="selectedPizza">
+        <div class="col-6">
+            <app-pizza [pizza]="selectedPizza" (unselected)="unSelect($event)"></app-pizza>
+        </div>
+        <div class="col-6">
+            <app-ingredient-list
+                [ingredients]="ingredients"
+                (selected)="addIngredient($event)"
+            ></app-ingredient-list>
+        </div>
+    </div>
     
     <!--
         En utilisant la grille de Bootstrap, on veut afficher 4 pizzas par ligne
@@ -19,6 +29,9 @@
                 <div class="card-body">
                     <h2 class="card-title">{{ pizza.name }}</h2>
                     <p class="card-text">{{ pizza.price }}</p>
+                    <div *ngIf="pizza.ingredient">
+                        <img width="50" [src]="'assets/ingredients/' + pizza.ingredient.image">
+                    </div>
                     <button (click)="onSelect(pizza)"
                         class="btn btn-primary"
                         [disabled]="pizza === selectedPizza"
@@ -31,7 +44,6 @@
     </div>
 
     <app-author [user]="user"></app-author>
-    <app-ingredient-list [ingredients]="ingredients"></app-ingredient-list>
     
     {{ pizzas | json }}
 </div>
