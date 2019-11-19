@@ -2,13 +2,9 @@ import { Component } from '@angular/core';
 import { Pizza } from './models/pizza.model';
 import { User } from './models/user.model';
 import { Ingredient } from './models/ingredient';
-
-const PIZZAS : Pizza[] = [
-  { id: 1, name: 'Reine', price: 12, image: 'reine.jpg' },
-  { id: 2, name: '4 fromages', price: 13, image: '4-fromages.jpg' },
-  { id: 3, name: 'Orientale', price: 11, image: 'orientale.jpg' },
-  { id: 4, name: 'Cannibale', price: 9, image: 'cannibale.jpg' }
-];
+import { PizzaService } from './services/pizza.service';
+import { $ } from 'protractor';
+import { MessageService } from './services/message.service';
 
 @Component({
   selector: 'app-root',
@@ -28,13 +24,25 @@ export class AppComponent {
 
   selectedPizza: Pizza;
   // Liste de pizzas à afficher dans le composant
-  pizzas: Pizza[] = PIZZAS;
+  pizzas: Pizza[];
 
   user: User = new User('Mota', 'Matthieu', '1991-11-18', 'https://...');
   ingredients: Ingredient[] = [
     { name: 'Tomate', image: 'tomato.png', weight: 20, price: 0.50 },
     { name: 'Avocat', image: 'avocado.png', weight: 60, price: 1.50 }
   ];
+
+  constructor(
+    private pizzaService: PizzaService,
+    private messageService: MessageService
+  ) { }
+
+  // Hook appelé à l'initialisation du composant
+  ngOnInit() {
+    this.pizzaService.getPizzasSlowly().then(
+      pizzas => this.pizzas = pizzas
+    );
+  }
 
   // Quand on clique sur une pizza
   onSelect(pizza: Pizza) {
@@ -44,6 +52,10 @@ export class AppComponent {
       this.selectedPizza.ingredient = null;
     }
     this.selectedPizza = pizza;
+
+    this.messageService.addMessage(
+      'Ajout de la pizza ' + this.selectedPizza.name
+    );
   }
 
   // Quand on reçoit l'événement de l'enfant

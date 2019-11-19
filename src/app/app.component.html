@@ -2,6 +2,12 @@
 <app-menu [title]="title"></app-menu>
 
 <div class="container">
+
+    <!-- Afficher ces messages à partir du service Message -->
+    <div class="mt-5">
+        
+    </div>
+
     <div class="row mt-5" *ngIf="selectedPizza">
         <div class="col-6">
             <app-pizza [pizza]="selectedPizza" (unselected)="unSelect($event)"></app-pizza>
