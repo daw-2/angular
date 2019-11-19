@@ -39,7 +39,7 @@ export class AppComponent {
 
   // Hook appelé à l'initialisation du composant
   ngOnInit() {
-    this.pizzaService.getPizzasSlowly().then(
+    this.pizzaService.getPizzas().then(
       pizzas => this.pizzas = pizzas
     );
   }

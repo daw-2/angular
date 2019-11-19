@@ -34,7 +34,7 @@
                 <img class="card-img-top" [src]="'assets/pizzas/' + pizza.image" [alt]="pizza.name">
                 <div class="card-body">
                     <h2 class="card-title">{{ pizza.name | uppercase }}</h2>
-                    <p class="card-text">{{ pizza.price }}</p>
+                    <p class="card-text">{{ pizza.price | tax }}</p>
                     <div *ngIf="pizza.ingredient">
                         <img width="50" [src]="'assets/ingredients/' + pizza.ingredient.image">
                     </div>
