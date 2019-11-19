@@ -41,4 +41,10 @@ export class AppComponent {
     console.log(pizza);
     this.selectedPizza = pizza;
   }
+
+  // Quand on reçoit l'événement de l'enfant
+  unSelect(pizza: Pizza) {
+    console.log(pizza);
+    this.selectedPizza = null;
+  }
 }

@@ -1,7 +1,12 @@
 <div *ngIf="selectedPizza">
-    <div>Id: {{ selectedPizza?.id }}</div>
-    <div>Name: {{ selectedPizza?.name }}</div>
-    <div>Price: {{ selectedPizza?.price }}</div>
-    <img [src]="selectedPizza.image">
-    <input [(ngModel)]="selectedPizza.name">
+    <div class="card text-center mt-5">
+        <div class="card-body">
+            <h2 class="card-title">Name: {{ selectedPizza?.name }}</h2>
+            <div>Id: {{ selectedPizza?.id }}</div>
+            <div>Price: {{ selectedPizza?.price }}</div>
+            <img width="150" [src]="'assets/pizzas/' + selectedPizza.image">
+            <input [(ngModel)]="selectedPizza.name" class="form-control">
+            <button class="btn btn-danger" (click)="delete()">Supprimer</button>
+        </div>
+    </div>
 </div>
