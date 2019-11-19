@@ -1,14 +1,14 @@
+<!-- Affiche une navbar Bootstrap -->
+<app-menu [title]="title"></app-menu>
+
 <div class="container">
-    <!-- Affiche une navbar Bootstrap -->
-    <app-menu></app-menu>
-
-    <h1>{{ title }}</h1>
-
     <app-pizza [pizza]="selectedPizza"></app-pizza>
     
-    <app-author [user]="user"></app-author>
-    <app-ingredient-list [ingredients]="ingredients"></app-ingredient-list>
-    
+    <!-- 
+        En utilisant la grille de Bootstrap, on veut afficher 4 pizzas par ligne
+        Chaque pizza sera affichée dans une card Bootstrap
+        On retrouvera dans cette card, une image de la pizza, son nom, son prix et un bouton pour la sélectionner
+    -->
     <ul>
         <li *ngFor="let pizza of pizzas; index as i"
             (click)="onSelect(pizza)"
@@ -17,6 +17,9 @@
             {{ i }} : {{ pizza.name }}
         </li>
     </ul>
+
+    <app-author [user]="user"></app-author>
+    <app-ingredient-list [ingredients]="ingredients"></app-ingredient-list>
     
     {{ pizzas | json }}
 </div>
