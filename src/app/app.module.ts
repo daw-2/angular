@@ -8,6 +8,7 @@ import { AuthorComponent } from './author/author.component';
 import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
 import { MenuComponent } from './menu/menu.component';
 import { MessagesComponent } from './messages/messages.component';
+import { AgePipe } from './pipes/age.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MessagesComponent } from './messages/messages.component';
     AuthorComponent,
     IngredientListComponent,
     MenuComponent,
-    MessagesComponent
+    MessagesComponent,
+    AgePipe
   ],
   imports: [
     BrowserModule,

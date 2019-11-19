@@ -5,7 +5,7 @@
 
     <!-- Afficher ces messages à partir du service Message -->
     <div class="mt-5">
-        
+        <app-messages></app-messages>
     </div>
 
     <div class="row mt-5" *ngIf="selectedPizza">
@@ -33,7 +33,7 @@
             <div class="card">
                 <img class="card-img-top" [src]="'assets/pizzas/' + pizza.image" [alt]="pizza.name">
                 <div class="card-body">
-                    <h2 class="card-title">{{ pizza.name }}</h2>
+                    <h2 class="card-title">{{ pizza.name | uppercase }}</h2>
                     <p class="card-text">{{ pizza.price }}</p>
                     <div *ngIf="pizza.ingredient">
                         <img width="50" [src]="'assets/ingredients/' + pizza.ingredient.image">

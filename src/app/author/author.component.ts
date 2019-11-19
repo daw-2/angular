@@ -5,7 +5,8 @@ import { User } from '../models/user.model';
     selector: 'app-author',
     template: `
         <h2>{{ user.firstName + ' ' + user.lastName }}</h2>
-        {{ user.birthdate }} : {{ user.age }}
+        {{ user.birthdate }} : {{ user.age }} <br />
+        {{ user.birthdate | age:' ans' }}
         <img [src]="user.avatar">
     `
 })
