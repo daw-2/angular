@@ -15,4 +15,11 @@ export class PizzaService {
             setTimeout(() => resolve(this.getPizzas()), 2000);
         });
     }
+
+    // Récupérer une seule pizza
+    getPizza(id: number): Promise<Pizza> {
+        return this.getPizzas().then(
+            pizzas => pizzas.find(pizza => pizza.id === id)
+        );
+    }
 }

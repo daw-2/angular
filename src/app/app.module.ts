@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { PizzaComponent } from './pizza/pizza.component';
@@ -11,6 +12,9 @@ import { MessagesComponent } from './messages/messages.component';
 import { AgePipe } from './pipes/age.pipe';
 import { TaxPipe } from './pipes/tax.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { PizzaListComponent } from './pizza-list/pizza-list.component';
+import { HomeComponent } from './home/home.component';
+import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +26,19 @@ import { SortPipe } from './pipes/sort.pipe';
     MessagesComponent,
     AgePipe,
     TaxPipe,
-    SortPipe
+    SortPipe,
+    PizzaListComponent,
+    HomeComponent,
+    PizzaSingleComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'pizzas', component: PizzaListComponent },
+      { path: 'pizzas/:id', component: PizzaSingleComponent }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,72 @@
+<!-- Afficher ces messages à partir du service Message -->
+<div class="mt-5">
+    <app-messages></app-messages>
+</div>
+
+<div class="row mt-5" *ngIf="selectedPizza">
+    <div class="col-6">
+        <app-pizza [pizza]="selectedPizza" (unselected)="unSelect($event)"></app-pizza>
+    </div>
+    <div class="col-6">
+        <app-ingredient-list
+            [ingredients]="ingredients"
+            (selected)="addIngredient($event)"
+        ></app-ingredient-list>
+    </div>
+</div>
+
+<!--
+    En utilisant la grille de Bootstrap, on veut afficher 4 pizzas par ligne
+    Chaque pizza sera affichée dans une card Bootstrap
+    On retrouvera dans cette card, une image de la pizza, son nom, son prix et un bouton pour la sélectionner
+-->
+
+<div class="row">
+    <div class="col-lg-6">
+        <label for="">Trier par :</label>
+        <select class="form-control" [(ngModel)]="sort.field">
+            <option value="name">Nom</option>
+            <option value="price">Prix</option>
+        </select>
+    </div>
+    <div class="col-lg-6">
+        <label for="">Ordre :</label>
+        <select class="form-control" [(ngModel)]="sort.order">
+            <option value="asc">Ascendant</option>
+            <option value="desc">Descendant</option>
+        </select>
+    </div>
+</div>
+
+<div class="row my-5">
+    <div class="col-3"
+            *ngFor="let pizza of pizzas | sort:sort.field:sort.order; index as i"
+            [class.selected]="pizza === selectedPizza"
+    >
+        <div class="card">
+            <img class="card-img-top" [src]="'assets/pizzas/' + pizza.image" [alt]="pizza.name">
+            <div class="card-body">
+                <h2 class="card-title">{{ pizza.name | uppercase }}</h2>
+                <p class="card-text">{{ pizza.price | tax }}</p>
+                <div *ngIf="pizza.ingredient">
+                    <img width="50" [src]="'assets/ingredients/' + pizza.ingredient.image">
+                </div>
+                <button (click)="onSelect(pizza)"
+                    class="btn btn-primary"
+                    [disabled]="pizza === selectedPizza"
+                >
+                    Sélectionner
+                </button>
+                <a [routerLink]="['/pizzas', pizza.id]"
+                   class="btn btn-info"
+                >
+                    Voir
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-author [user]="user"></app-author>
+
+{{ pizzas | json }}
