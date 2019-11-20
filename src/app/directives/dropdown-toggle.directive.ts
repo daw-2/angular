@@ -1,15 +1,17 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[dropdownToggle]'
 })
 export class DropdownToggleDirective {
 
-  constructor(private element: ElementRef) { }
+  constructor(private element: ElementRef, private renderer2: Renderer2) { }
 
   @HostListener('click') change() {
     let dropdownMenu = this.element.nativeElement.nextElementSibling;
     let parent = this.element.nativeElement.parentNode;
+
+    this.renderer2.addClass(dropdownMenu, 'toto');
 
     if (dropdownMenu.classList.contains('show')) {
       dropdownMenu.classList.remove('show');
