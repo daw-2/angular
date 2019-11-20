@@ -28,6 +28,7 @@ export class SortPipe implements PipeTransform {
         // Avec lodash
         let valueSortedLodash = _.sortBy(value, [field]);
         if ('desc' === order) valueSortedLodash.reverse();
+        // _.orderBy(value, [field], [order]);
 
         return valueSortedLodash;
     }
