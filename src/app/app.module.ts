@@ -16,6 +16,7 @@ import { PizzaListComponent } from './pizza-list/pizza-list.component';
 import { HomeComponent } from './home/home.component';
 import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
 import { PizzaResolverService } from './services/pizza-resolver.service';
+import { TestDirective } from './directives/test.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PizzaResolverService } from './services/pizza-resolver.service';
     SortPipe,
     PizzaListComponent,
     HomeComponent,
-    PizzaSingleComponent
+    PizzaSingleComponent,
+    TestDirective
   ],
   imports: [
     BrowserModule,
