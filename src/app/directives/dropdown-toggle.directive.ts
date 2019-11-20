@@ -9,11 +9,14 @@ export class DropdownToggleDirective {
 
   @HostListener('click') change() {
     let dropdownMenu = this.element.nativeElement.nextElementSibling;
+    let parent = this.element.nativeElement.parentNode;
 
     if (dropdownMenu.classList.contains('show')) {
       dropdownMenu.classList.remove('show');
+      parent.classList.remove('show');
     } else {
       dropdownMenu.classList.add('show');
+      parent.classList.add('show');
     }
   }
 }
