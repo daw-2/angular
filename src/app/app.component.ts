@@ -4,7 +4,7 @@ import { User } from './models/user.model';
 import { Ingredient } from './models/ingredient';
 import { PizzaService } from './services/pizza.service';
 import { MessageService } from './services/message.service';
-import { Router, RouterEvent, NavigationStart, NavigationEnd } from '@angular/router';
+import { Router, RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -33,7 +33,9 @@ export class AppComponent {
         this.loading = true;
       }
 
-      if (event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd ||
+          event instanceof NavigationCancel ||
+          event instanceof NavigationError) {
         this.loading = false;
       }
     });

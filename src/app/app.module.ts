@@ -42,7 +42,10 @@ import { PizzaResolverService } from './services/pizza-resolver.service';
         component: PizzaListComponent,
         resolve: {
           pizzas: PizzaResolverService
-        }
+        },
+        children: [
+          { path: 'test/:id', component: PizzaSingleComponent }
+        ]
       },
       { path: 'pizzas/:id', component: PizzaSingleComponent }
     ])
