@@ -3,7 +3,7 @@ import { PizzaService } from '../services/pizza.service';
 import { ActivatedRoute } from '@angular/router';
 import { Pizza } from '../models/pizza.model';
 import { switchMap, map, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
-import { fromEvent } from 'rxjs';
+import { fromEvent, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pizza-single',
@@ -46,6 +46,34 @@ export class PizzaSingleComponent implements OnInit {
           // map(params => this.pizzaService.getPizza(+params.id))
         )
         .subscribe(pizza => console.log(pizza));
+
+    
+    let observable = new Observable(observer => {
+      let i = 0;
+
+      let interval = setInterval(() => {
+        observer.next(++i);
+
+        if (10 === i) {
+          observer.complete();
+          clearInterval(interval);
+        }
+
+        if (3 === i) {
+          // observer.error('Erreur...');
+        }
+      }, 1000);
+    });
+
+    observable
+      .pipe(
+        filter(value => 3 !== value)
+      )
+      .subscribe(
+        (value) => console.log(value),
+        (error) => console.log(error),
+        () => console.log('Terminé')
+      );
   }
 
 }

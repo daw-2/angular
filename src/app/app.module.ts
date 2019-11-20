@@ -15,6 +15,7 @@ import { SortPipe } from './pipes/sort.pipe';
 import { PizzaListComponent } from './pizza-list/pizza-list.component';
 import { HomeComponent } from './home/home.component';
 import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
+import { PizzaResolverService } from './services/pizza-resolver.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,13 @@ import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'pizzas', component: PizzaListComponent },
+      {
+        path: 'pizzas',
+        component: PizzaListComponent,
+        resolve: {
+          pizzas: PizzaResolverService
+        }
+      },
       { path: 'pizzas/:id', component: PizzaSingleComponent }
     ])
   ],

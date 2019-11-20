@@ -4,6 +4,7 @@ import { User } from '../models/user.model';
 import { Ingredient } from '../models/ingredient';
 import { PizzaService } from '../services/pizza.service';
 import { MessageService } from '../services/message.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pizza-list',
@@ -28,14 +29,18 @@ export class PizzaListComponent implements OnInit {
 
   constructor(
     private pizzaService: PizzaService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private route: ActivatedRoute
   ) { }
 
   // Hook appelé à l'initialisation du composant
   ngOnInit() {
-    this.pizzaService.getPizzas().then(
+    /*this.pizzaService.getPizzasSlowly().then(
       pizzas => this.pizzas = pizzas
-    );
+    );*/
+    this.route.data.subscribe(data => {
+      this.pizzas = data.pizzas;
+    });
   }
 
   // Quand on clique sur une pizza

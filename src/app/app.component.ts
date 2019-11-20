@@ -4,6 +4,8 @@ import { User } from './models/user.model';
 import { Ingredient } from './models/ingredient';
 import { PizzaService } from './services/pizza.service';
 import { MessageService } from './services/message.service';
+import { Router, RouterEvent, NavigationStart, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -20,4 +22,24 @@ import { MessageService } from './services/message.service';
 })
 export class AppComponent {
   title = 'Mon super site';
+  loading = false;
+  routerEvents: Subscription;
+
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+    this.routerEvents = this.router.events.subscribe((event: RouterEvent) => {
+      if (event instanceof NavigationStart) {
+        this.loading = true;
+      }
+
+      if (event instanceof NavigationEnd) {
+        this.loading = false;
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.routerEvents.unsubscribe();
+  }
 }
