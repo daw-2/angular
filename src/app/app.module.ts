@@ -17,6 +17,9 @@ import { HomeComponent } from './home/home.component';
 import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
 import { PizzaResolverService } from './services/pizza-resolver.service';
 import { TestDirective } from './directives/test.directive';
+import { BgDirective } from './directives/bg.directive';
+import { ClearOnDbClickDirective } from './directives/clear-on-db-click.directive';
+import { DropdownToggleDirective } from './directives/dropdown-toggle.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { TestDirective } from './directives/test.directive';
     PizzaListComponent,
     HomeComponent,
     PizzaSingleComponent,
-    TestDirective
+    TestDirective,
+    BgDirective,
+    ClearOnDbClickDirective,
+    DropdownToggleDirective
   ],
   imports: [
     BrowserModule,
