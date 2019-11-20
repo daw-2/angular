@@ -10,6 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AgePipe } from './pipes/age.pipe';
 import { TaxPipe } from './pipes/tax.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TaxPipe } from './pipes/tax.pipe';
     MenuComponent,
     MessagesComponent,
     AgePipe,
-    TaxPipe
+    TaxPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,

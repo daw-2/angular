@@ -3,7 +3,6 @@ import { Pizza } from './models/pizza.model';
 import { User } from './models/user.model';
 import { Ingredient } from './models/ingredient';
 import { PizzaService } from './services/pizza.service';
-import { $ } from 'protractor';
 import { MessageService } from './services/message.service';
 
 @Component({
@@ -31,6 +30,11 @@ export class AppComponent {
     { name: 'Tomate', image: 'tomato.png', weight: 20, price: 0.50 },
     { name: 'Avocat', image: 'avocado.png', weight: 60, price: 1.50 }
   ];
+
+  sort = {
+    field: 'name',
+    order: 'asc'
+  };
 
   constructor(
     private pizzaService: PizzaService,

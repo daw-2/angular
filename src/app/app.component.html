@@ -25,9 +25,27 @@
         Chaque pizza sera affichée dans une card Bootstrap
         On retrouvera dans cette card, une image de la pizza, son nom, son prix et un bouton pour la sélectionner
     -->
+
+    <div class="row">
+        <div class="col-lg-6">
+            <label for="">Trier par :</label>
+            <select class="form-control" [(ngModel)]="sort.field">
+                <option value="name">Nom</option>
+                <option value="price">Prix</option>
+            </select>
+        </div>
+        <div class="col-lg-6">
+            <label for="">Ordre :</label>
+            <select class="form-control" [(ngModel)]="sort.order">
+                <option value="asc">Ascendant</option>
+                <option value="desc">Descendant</option>
+            </select>
+        </div>
+    </div>
+
     <div class="row my-5">
         <div class="col-3"
-             *ngFor="let pizza of pizzas; index as i"
+             *ngFor="let pizza of pizzas | sort:sort.field:sort.order; index as i"
              [class.selected]="pizza === selectedPizza"
         >
             <div class="card">
