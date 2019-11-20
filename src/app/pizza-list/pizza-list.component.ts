@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Pizza } from '../models/pizza.model';
 import { User } from '../models/user.model';
 import { Ingredient } from '../models/ingredient';
 import { PizzaService } from '../services/pizza.service';
 import { MessageService } from '../services/message.service';
 import { ActivatedRoute } from '@angular/router';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-pizza-list',
@@ -27,6 +28,8 @@ export class PizzaListComponent implements OnInit {
     order: 'asc'
   };
 
+  @ViewChild('search', { static: false }) search: NgModel;
+
   constructor(
     private pizzaService: PizzaService,
     private messageService: MessageService,
@@ -41,6 +44,10 @@ export class PizzaListComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.pizzas = data.pizzas;
     });
+  }
+
+  ngAfterViewInit() {
+    console.log(this.search);
   }
 
   // Quand on clique sur une pizza

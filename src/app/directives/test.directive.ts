@@ -28,6 +28,6 @@ export class TestDirective {
 
     @HostListener('window:scroll', ['$event'])
     scroll(event) {
-        console.log(event.currentTarget.scrollY); // Récupère la position du scroll
+        // console.log(event.currentTarget.scrollY); // Récupère la position du scroll
     }
 }

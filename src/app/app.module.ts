@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppComponent } from './app.component';
 import { PizzaComponent } from './pizza/pizza.component';
@@ -20,6 +22,8 @@ import { TestDirective } from './directives/test.directive';
 import { BgDirective } from './directives/bg.directive';
 import { ClearOnDbClickDirective } from './directives/clear-on-db-click.directive';
 import { DropdownToggleDirective } from './directives/dropdown-toggle.directive';
+import { CardComponent } from './card/card.component';
+import { FakeApi } from './services/fake-api.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,8 @@ import { DropdownToggleDirective } from './directives/dropdown-toggle.directive'
     TestDirective,
     BgDirective,
     ClearOnDbClickDirective,
-    DropdownToggleDirective
+    DropdownToggleDirective,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,9 @@ import { DropdownToggleDirective } from './directives/dropdown-toggle.directive'
         ]
       },
       { path: 'pizzas/:id', component: PizzaSingleComponent }
-    ])
+    ]),
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(FakeApi)
   ],
   providers: [],
   bootstrap: [AppComponent]

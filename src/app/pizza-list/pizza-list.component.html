@@ -75,7 +75,7 @@
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam incidunt facilis accusamus quos eos delectus pariatur tempore, iste voluptas ut magni, natus aliquid ea similique ab deleniti cumque consequatur dolorem?
 </div>
 
-<input type="text" clearOnDbClick>
+<input type="text" ngModel clearOnDbClick #search="ngModel">
 
 <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" dropdownToggle>
@@ -87,6 +87,12 @@
         <a class="dropdown-item" href="#">Something else here</a>
     </div>
 </div>
+
+<app-card title="Ma card">
+    <div>
+        <strong>Mon contenu HTML</strong>
+    </div>
+</app-card>
 
 <app-author [user]="user"></app-author>
 
