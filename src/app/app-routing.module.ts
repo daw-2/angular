@@ -7,6 +7,7 @@ import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
 import { PizzaFormComponent } from './pizza-form/pizza-form.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
 
 @NgModule({
     imports: [
@@ -16,14 +17,15 @@ import { BrowserModule } from '@angular/platform-browser';
                 path: 'pizzas',
                 component: PizzaListComponent,
                 resolve: {
-                pizzas: PizzaResolverService
+                    pizzas: PizzaResolverService
                 },
                 children: [
-                { path: 'test/:id', component: PizzaSingleComponent }
+                    { path: 'test/:id', component: PizzaSingleComponent }
                 ]
             },
             { path: 'pizzas/create', component: PizzaFormComponent },
-            { path: 'pizzas/:id', component: PizzaSingleComponent }
+            { path: 'pizzas/:id', component: PizzaSingleComponent },
+            { path: 'ingredients/create', component: IngredientFormComponent }
         ]),
         FormsModule,
         BrowserModule

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
@@ -23,6 +23,7 @@ import { DropdownToggleDirective } from './directives/dropdown-toggle.directive'
 import { CardComponent } from './card/card.component';
 import { FakeApi } from './services/fake-api.service';
 import { AppRoutingModule } from './app-routing.module';
+import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
 
 @NgModule({
   declarations: [
@@ -42,13 +43,15 @@ import { AppRoutingModule } from './app-routing.module';
     BgDirective,
     ClearOnDbClickDirective,
     DropdownToggleDirective,
-    CardComponent
+    CardComponent,
+    IngredientFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     // HttpClientInMemoryWebApiModule.forRoot(FakeApi)
   ],
   providers: [],
