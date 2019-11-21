@@ -22,7 +22,6 @@ import { ClearOnDbClickDirective } from './directives/clear-on-db-click.directiv
 import { DropdownToggleDirective } from './directives/dropdown-toggle.directive';
 import { CardComponent } from './card/card.component';
 import { FakeApi } from './services/fake-api.service';
-import { PizzaFormComponent } from './pizza-form/pizza-form.component';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({

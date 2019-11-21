@@ -62,6 +62,15 @@
                 >
                     Voir
                 </a>
+                <button (click)="delete(pizza)"
+                    class="btn btn-danger"
+                    [disabled]="pizza.id === pizzaDeleted"
+                >
+                    <i *ngIf="pizza.id === pizzaDeleted"
+                       class="spinner-border"
+                       style="width: 1rem; height: 1rem;"></i>
+                    Supprimer
+                </button>
             </div>
         </div>
     </div>

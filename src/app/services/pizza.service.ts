@@ -32,4 +32,14 @@ export class PizzaService {
             () => pizza
         );
     }
+
+    create(pizza: Pizza) {
+        return this.http.post('api/pizzas', pizza).toPromise().then(
+            response => response as Pizza
+        );
+    }
+
+    delete(id: number) {
+        return this.http.delete('api/pizzas/' + id).toPromise();
+    }
 }

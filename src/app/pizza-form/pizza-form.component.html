@@ -1,1 +1,47 @@
-<p>pizza-form works!</p>
+<!--
+<form (ngSubmit)="save(pizzaForm.value)" #pizzaForm="ngForm">
+-->
+<form (ngSubmit)="save()" #pizzaForm="ngForm">
+    <div class="form-group">
+        <label for="name">Nom</label>
+        <input type="text"
+               class="form-control"
+               name="name"
+               [(ngModel)]="pizza.name"
+               #name="ngModel"
+               required
+               minlength="3"
+               [class.is-invalid]="name.dirty && name.invalid">
+        <div *ngIf="name.dirty && name.hasError('required')"
+             class="invalid-feedback"
+        >
+            Le nom est obligatoire.
+        </div>
+        <div *ngIf="name.dirty && name.hasError('minlength')"
+             class="invalid-feedback"
+        >
+            Le nom doit faire 3 caractères.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Prix</label>
+        <input type="number"
+               class="form-control"
+               name="price"
+               [(ngModel)]="pizza.price"
+               #price="ngModel"
+               required
+               [class.is-invalid]="price.dirty && price.invalid">
+        <div *ngIf="price.dirty && price.hasError('required')"
+               class="invalid-feedback"
+          >
+            Le prix est obligatoire.
+        </div>
+    </div>
+
+    <button class="btn btn-primary"
+        [disabled]="pizzaForm.invalid">
+        Créer la pizza
+    </button>
+</form>

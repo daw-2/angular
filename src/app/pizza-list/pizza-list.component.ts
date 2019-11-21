@@ -28,6 +28,8 @@ export class PizzaListComponent implements OnInit {
     order: 'asc'
   };
 
+  pizzaDeleted;
+
   @ViewChild('search', { static: false }) search: NgModel;
 
   constructor(
@@ -73,5 +75,16 @@ export class PizzaListComponent implements OnInit {
   // Quand on choisit un ingredient dans le composant ingredient-list
   addIngredient(ingredient: Ingredient) {
     this.selectedPizza.ingredient = ingredient;
+  }
+
+  delete(pizza: Pizza) {
+    this.pizzaDeleted = pizza.id;
+
+    this.pizzaService.delete(pizza.id).then(
+      () => {
+        this.pizzas = this.pizzas.filter(pizza => pizza.id !== this.pizzaDeleted);
+        this.pizzaDeleted = null;
+      }
+    )
   }
 }

@@ -5,6 +5,8 @@ import { PizzaListComponent } from './pizza-list/pizza-list.component';
 import { PizzaResolverService } from './services/pizza-resolver.service';
 import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
 import { PizzaFormComponent } from './pizza-form/pizza-form.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
     imports: [
@@ -23,6 +25,8 @@ import { PizzaFormComponent } from './pizza-form/pizza-form.component';
             { path: 'pizzas/create', component: PizzaFormComponent },
             { path: 'pizzas/:id', component: PizzaSingleComponent }
         ]),
+        FormsModule,
+        BrowserModule
     ],
     declarations: [
         PizzaFormComponent
