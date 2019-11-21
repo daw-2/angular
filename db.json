@@ -1,12 +1,40 @@
 {
-    "ingredients": [
-        { "name": "Tomate", "image": "tomato.png", "weight": 20, "price": 0.50 },
-        { "name": "Avocat", "image": "avocado.png", "weight": 60, "price": 1.50 }
-    ],
-    "pizzas": [
-        { "id": 1, "name": "Reine", "price": 12, "image": "reine.jpg" },
-        { "id": 2, "name": "4 fromages", "price": 13, "image": "4-fromages.jpg" },
-        { "id": 3, "name": "Orientale", "price": 11, "image": "orientale.jpg" },
-        { "id": 4, "name": "Cannibale", "price": 9, "image": "cannibale.jpg" }
-    ]
+  "ingredients": [
+    {
+      "name": "Tomate",
+      "price": "5",
+      "id": 1
+    },
+    {
+      "name": "Citron",
+      "price": "10",
+      "id": 2
+    }
+  ],
+  "pizzas": [
+    {
+      "id": 1,
+      "name": "Reine",
+      "price": 12,
+      "image": "reine.jpg"
+    },
+    {
+      "id": 2,
+      "name": "4 fromages",
+      "price": 13,
+      "image": "4-fromages.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Orientale",
+      "price": 11,
+      "image": "orientale.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Cannibale",
+      "price": 9,
+      "image": "cannibale.jpg"
+    }
+  ]
 }

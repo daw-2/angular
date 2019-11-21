@@ -22,10 +22,14 @@ export class IngredientService {
     getIngredient(id: number): Observable<Ingredient> { }
 
     create(ingredient: Ingredient): Observable<Ingredient> {
-        
+        return this.http.post(`${this.url}ingredients`, ingredient).pipe(
+            map(response => response as Ingredient)
+        );
     }
 
     update(id: number): Observable<Ingredient> { }
 
-    delete(id: number): void { }
+    delete(id: number): Observable<Object> {
+        return this.http.delete(`${this.url}ingredients/${id}`);
+    }
 }
