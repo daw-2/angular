@@ -24,6 +24,7 @@ import { CardComponent } from './card/card.component';
 import { FakeApi } from './services/fake-api.service';
 import { AppRoutingModule } from './app-routing.module';
 import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { IngredientFormComponent } from './ingredient-form/ingredient-form.compo
     ClearOnDbClickDirective,
     DropdownToggleDirective,
     CardComponent,
-    IngredientFormComponent
+    IngredientFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,

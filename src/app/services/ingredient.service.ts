@@ -19,7 +19,7 @@ export class IngredientService {
         );
     }
 
-    getIngredient(id: number): Observable<Ingredient> { }
+    //getIngredient(id: number): Observable<Ingredient> { }
 
     create(ingredient: Ingredient): Observable<Ingredient> {
         return this.http.post(`${this.url}ingredients`, ingredient).pipe(
@@ -27,7 +27,7 @@ export class IngredientService {
         );
     }
 
-    update(id: number): Observable<Ingredient> { }
+    //update(id: number): Observable<Ingredient> { }
 
     delete(id: number): Observable<Object> {
         return this.http.delete(`${this.url}ingredients/${id}`);

@@ -8,6 +8,7 @@ import { PizzaFormComponent } from './pizza-form/pizza-form.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { IngredientFormComponent } from './ingredient-form/ingredient-form.compo
             },
             { path: 'pizzas/create', component: PizzaFormComponent },
             { path: 'pizzas/:id', component: PizzaSingleComponent },
-            { path: 'ingredients/create', component: IngredientFormComponent }
+            { path: 'ingredients/create', component: IngredientFormComponent },
+            { path: 'register', component: RegisterFormComponent }
         ]),
         FormsModule,
         BrowserModule
