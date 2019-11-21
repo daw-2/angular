@@ -3,6 +3,7 @@ import { Ingredient } from '../models/ingredient';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IngredientService } from '../services/ingredient.service';
 import { Router } from '@angular/router';
+import { ingredientExists } from '../validators/ingredient-exists';
 
 @Component({
   selector: 'app-ingredient-form',
@@ -19,7 +20,7 @@ export class IngredientFormComponent implements OnInit {
     private router: Router
   ) {
     this.ingredientForm = fb.group({
-      name: fb.control(this.ingredient.name, [Validators.required, Validators.minLength(3)]),
+      name: fb.control(this.ingredient.name, [Validators.required, Validators.minLength(3)], ingredientExists(ingredientService)),
       price: fb.control(this.ingredient.price, Validators.required)
     });
   }

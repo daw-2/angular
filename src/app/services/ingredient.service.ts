@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ingredient } from '../models/ingredient';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, delay } from 'rxjs/operators';
 import { Pizza } from '../models/pizza.model';
 
 @Injectable({
@@ -31,5 +31,12 @@ export class IngredientService {
 
     delete(id: number): Observable<Object> {
         return this.http.delete(`${this.url}ingredients/${id}`);
+    }
+
+    exists(name: string): Observable<boolean> {
+        return this.http.get(`${this.url}ingredients/?name=${name}`).pipe(
+            delay(1500),
+            map((response: []) => response.length > 0 ? true : false),
+        );
     }
 }
