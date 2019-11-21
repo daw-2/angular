@@ -12,7 +12,7 @@ export class User {
     }
 
     get age() {
-        console.log('call');
+        //console.log('call');
         let currentDate = (new Date()).getTime();
         let birthDate = (new Date('1991-11-18')).getTime();
         let timeDiff = currentDate - birthDate;

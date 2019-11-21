@@ -49,7 +49,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(FakeApi)
+    // HttpClientInMemoryWebApiModule.forRoot(FakeApi)
   ],
   providers: [],
   bootstrap: [AppComponent]

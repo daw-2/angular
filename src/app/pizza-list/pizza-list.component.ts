@@ -6,6 +6,7 @@ import { PizzaService } from '../services/pizza.service';
 import { MessageService } from '../services/message.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgModel } from '@angular/forms';
+import { IngredientService } from '../services/ingredient.service';
 
 @Component({
   selector: 'app-pizza-list',
@@ -18,10 +19,7 @@ export class PizzaListComponent implements OnInit {
   pizzas: Pizza[];
 
   user: User = new User('Mota', 'Matthieu', '1991-11-18', 'https://...');
-  ingredients: Ingredient[] = [
-    { name: 'Tomate', image: 'tomato.png', weight: 20, price: 0.50 },
-    { name: 'Avocat', image: 'avocado.png', weight: 60, price: 1.50 }
-  ];
+  ingredients: Ingredient[];
 
   sort = {
     field: 'name',
@@ -35,7 +33,8 @@ export class PizzaListComponent implements OnInit {
   constructor(
     private pizzaService: PizzaService,
     private messageService: MessageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ingredientService: IngredientService
   ) { }
 
   // Hook appelé à l'initialisation du composant
@@ -46,6 +45,10 @@ export class PizzaListComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.pizzas = data.pizzas;
     });
+
+    this.ingredientService.getIngredients().subscribe(
+      ingredients => this.ingredients = ingredients
+    );
   }
 
   ngAfterViewInit() {
