@@ -22,12 +22,7 @@ export class IngredientService {
     getIngredient(id: number): Observable<Ingredient> { }
 
     create(ingredient: Ingredient): Observable<Ingredient> {
-        this.getIngredients().subscribe(response => {
-            let id = response[0].id;
-            return this.http.post(`${this.url}ingredients/${id}`, ingredient).pipe(
-                map(response => response as Ingredient)
-            );
-        });
+        
     }
 
     update(id: number): Observable<Ingredient> { }
