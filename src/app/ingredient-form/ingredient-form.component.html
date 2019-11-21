@@ -23,5 +23,15 @@
         </div>
     </div>
 
-    <button class="btn btn-primary" [disabled]="ingredientForm.invalid">Ajouter l'ingrédient</button>
+    <div *ngIf="ingredientForm.get('name').status === 'PENDING'">
+        Chargement en cours...
+    </div>
+    <div *ngIf="ingredientForm.get('name').dirty && ingredientForm.get('name').status === 'INVALID'" class="invalid-feedback d-block">
+        L'ingrédient existe
+    </div>
+    <div *ngIf="ingredientForm.get('name').status === 'VALID'" class="valid-feedback d-block">
+        L'ingrédient est disponible
+    </div>
+
+    <button class="btn btn-primary" [disabled]="!ingredientForm.valid">Ajouter l'ingrédient</button>
 </form>
