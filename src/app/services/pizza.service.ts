@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Pizza } from '../models/pizza.model';
-import { PIZZAS } from '../mocks/pizza.mock';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -25,6 +24,12 @@ export class PizzaService {
     getPizza(id: number): Promise<Pizza> {
         return this.http.get('api/pizzas/' + id).toPromise().then(
             response => response as Pizza
+        );
+    }
+
+    update(pizza: Pizza) {
+        return this.http.put('api/pizzas/' + pizza.id, pizza).toPromise().then(
+            () => pizza
         );
     }
 }

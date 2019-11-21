@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
@@ -17,13 +16,14 @@ import { SortPipe } from './pipes/sort.pipe';
 import { PizzaListComponent } from './pizza-list/pizza-list.component';
 import { HomeComponent } from './home/home.component';
 import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
-import { PizzaResolverService } from './services/pizza-resolver.service';
 import { TestDirective } from './directives/test.directive';
 import { BgDirective } from './directives/bg.directive';
 import { ClearOnDbClickDirective } from './directives/clear-on-db-click.directive';
 import { DropdownToggleDirective } from './directives/dropdown-toggle.directive';
 import { CardComponent } from './card/card.component';
 import { FakeApi } from './services/fake-api.service';
+import { PizzaFormComponent } from './pizza-form/pizza-form.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -48,20 +48,7 @@ import { FakeApi } from './services/fake-api.service';
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      {
-        path: 'pizzas',
-        component: PizzaListComponent,
-        resolve: {
-          pizzas: PizzaResolverService
-        },
-        children: [
-          { path: 'test/:id', component: PizzaSingleComponent }
-        ]
-      },
-      { path: 'pizzas/:id', component: PizzaSingleComponent }
-    ]),
+    AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(FakeApi)
   ],

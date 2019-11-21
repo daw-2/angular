@@ -16,7 +16,14 @@
                     >Accueil <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/pizzas" routerLinkActive="active">Pizzas</a>
+                    <a class="nav-link"
+                       routerLink="/pizzas"
+                       routerLinkActive="active"
+                       [routerLinkActiveOptions]="{ exact: true }"
+                    >Pizzas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/pizzas/create" routerLinkActive="active">Créer une pizza</a>
                 </li>
             </ul>
         </div>

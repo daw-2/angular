@@ -6,6 +6,7 @@
             <div>Price: {{ selectedPizza?.price }}</div>
             <img class="img-fluid" width="150" [src]="'assets/pizzas/' + selectedPizza.image">
             <input [(ngModel)]="selectedPizza.name" class="form-control">
+            <button class="btn btn-primary" (click)="save()">Modifier</button>
             <button class="btn btn-danger" (click)="delete()">Supprimer</button>
         </div>
     </div>
