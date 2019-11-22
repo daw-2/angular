@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '../models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -15,7 +16,8 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AngularFireAuth
+    private authService: AngularFireAuth,
+    private router: Router
   ) {
     this.userForm = fb.group({
       username: fb.control('', Validators.required),
@@ -35,7 +37,10 @@ export class LoginFormComponent implements OnInit {
 
     this.authService.auth.signInWithEmailAndPassword(
       this.user.username, this.user.password
-    ).then(success => console.log(success))
+    ).then(success => {
+      console.log(success);
+      this.router.navigate(['/pizzas']);
+    })
      .catch(error => {
        this.errorMessage = error.message;
      });

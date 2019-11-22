@@ -10,6 +10,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { AngularFireAuthGuard, AngularFireAuthGuardModule, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { MyOwnGuard } from './guards/my-own-guard.guard';
 
 @NgModule({
     imports: [
@@ -25,14 +27,21 @@ import { LoginFormComponent } from './login-form/login-form.component';
                     { path: 'test/:id', component: PizzaSingleComponent }
                 ]
             },
-            { path: 'pizzas/create', component: PizzaFormComponent },
+            {
+                path: 'pizzas/create',
+                component: PizzaFormComponent,
+                canActivate: [MyOwnGuard]
+                // canActivate: [AngularFireAuthGuard],
+                // data: { authGuardPipe: () => redirectUnauthorizedTo(['login']) }
+            },
             { path: 'pizzas/:id', component: PizzaSingleComponent },
             { path: 'ingredients/create', component: IngredientFormComponent },
             { path: 'register', component: RegisterFormComponent },
             { path: 'login', component: LoginFormComponent }
         ]),
         FormsModule,
-        BrowserModule
+        BrowserModule,
+        AngularFireAuthGuardModule
     ],
     declarations: [
         PizzaFormComponent
