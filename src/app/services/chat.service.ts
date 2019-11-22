@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +10,7 @@ export class ChatService {
     private url = 'http://192.168.111.37:4000';
     private socket: SocketIOClient.Socket;
 
-    constructor() {
+    constructor(private http: HttpClient) {
         this.socket = io(this.url);
     }
 
@@ -23,5 +24,6 @@ export class ChatService {
 
     send(message) {
         this.socket.emit('message', message);
+
     }
 }
