@@ -30,6 +30,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { CounterComponent } from './counter/counter.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { environment } from '../environments/environment';
     CardComponent,
     IngredientFormComponent,
     RegisterFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
