@@ -1,0 +1,92 @@
+{
+  "configVersion": 1,
+  "timestamp": 1574435812779,
+  "index": "/ib-angular/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/ib-angular/favicon.ico",
+        "/ib-angular/index.html",
+        "/ib-angular/main-es2015.205994f2830d8c849345.js",
+        "/ib-angular/main-es5.205994f2830d8c849345.js",
+        "/ib-angular/manifest.webmanifest",
+        "/ib-angular/polyfills-es2015.19aa098ef024439a4e26.js",
+        "/ib-angular/polyfills-es5.ada8b9eda3a1abf94265.js",
+        "/ib-angular/runtime-es2015.edb2fcf2778e7bf1d426.js",
+        "/ib-angular/runtime-es5.edb2fcf2778e7bf1d426.js",
+        "/ib-angular/styles.743a0f6fe167fcb6c762.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/ib-angular/assets/icons/icon-128x128.png",
+        "/ib-angular/assets/icons/icon-144x144.png",
+        "/ib-angular/assets/icons/icon-152x152.png",
+        "/ib-angular/assets/icons/icon-192x192.png",
+        "/ib-angular/assets/icons/icon-384x384.png",
+        "/ib-angular/assets/icons/icon-512x512.png",
+        "/ib-angular/assets/icons/icon-72x72.png",
+        "/ib-angular/assets/icons/icon-96x96.png",
+        "/ib-angular/assets/ingredients/avocado.png",
+        "/ib-angular/assets/ingredients/tomato.png",
+        "/ib-angular/assets/pizzas/4-fromages.jpg",
+        "/ib-angular/assets/pizzas/cannibale.jpg",
+        "/ib-angular/assets/pizzas/orientale.jpg",
+        "/ib-angular/assets/pizzas/reine.jpg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/ib-angular/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/ib-angular/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/ib-angular/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/ib-angular/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/ib-angular/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/ib-angular/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/ib-angular/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/ib-angular/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/ib-angular/assets/ingredients/avocado.png": "ec4d84b6c349852da7af88fde14223d949499614",
+    "/ib-angular/assets/ingredients/tomato.png": "42a6c96bba363b23b1f28eba4f1ed29f964432bf",
+    "/ib-angular/assets/pizzas/4-fromages.jpg": "d5a2694c660683e9dfdaa15cfd1c2b37ac8e2f3d",
+    "/ib-angular/assets/pizzas/cannibale.jpg": "39341e3225f143a1550fd739bdf00ab40cb52005",
+    "/ib-angular/assets/pizzas/orientale.jpg": "a98e8451757f0bbdd7a90c357074b94cebcc60c5",
+    "/ib-angular/assets/pizzas/reine.jpg": "df383fb324aa44ce47f125a2ded1f7e3b9d24e1c",
+    "/ib-angular/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/ib-angular/index.html": "5782c6774edb70b63aed94286ea96136eca9b555",
+    "/ib-angular/main-es2015.205994f2830d8c849345.js": "bf0313d64b8fcb3b5df55b458a21dddc36908848",
+    "/ib-angular/main-es5.205994f2830d8c849345.js": "0659def155bd61f874dd9f9543a776bc8e5681de",
+    "/ib-angular/manifest.webmanifest": "1755fc63dff9f477f9a56da1fd10429f7e9801a4",
+    "/ib-angular/polyfills-es2015.19aa098ef024439a4e26.js": "e3de051769988f8affb793d90a86f34754466963",
+    "/ib-angular/polyfills-es5.ada8b9eda3a1abf94265.js": "5f55db316071aecd210813d0ef3b66a40230b6df",
+    "/ib-angular/runtime-es2015.edb2fcf2778e7bf1d426.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/ib-angular/runtime-es5.edb2fcf2778e7bf1d426.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/ib-angular/styles.743a0f6fe167fcb6c762.css": "a33bf9d558b1205b3ed2f8fadd0a01af8c651e19"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 <div>
-    <input type="text" class="form-control" [(ngModel)]="message.user">
-    <input type="text" class="form-control" [(ngModel)]="message.value">
+    <label for="username">Username :</label>
+    <input id="username" type="text" class="form-control" [(ngModel)]="message.user">
+    <label for="message">Message :</label>
+    <input id="message" type="text" class="form-control" [(ngModel)]="message.value">
     <button (click)="send()" class="btn btn-primary">Envoyer</button>
 </div>
 <ul>

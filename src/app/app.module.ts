@@ -27,8 +27,9 @@ import { FakeApi } from './services/fake-api.service';
 import { AppRoutingModule } from './app-routing.module';
 import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
-import { environment } from 'src/environments/environment';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     HttpClientModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     // HttpClientInMemoryWebApiModule.forRoot(FakeApi)
   ],
   providers: [],
