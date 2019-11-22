@@ -4,12 +4,13 @@ import { Ingredient } from '../models/ingredient';
 import { HttpClient } from '@angular/common/http';
 import { map, delay } from 'rxjs/operators';
 import { Pizza } from '../models/pizza.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class IngredientService {
-    private url = 'http://localhost:3000/';
+    private url = environment.apiUrl;
 
     constructor(private http: HttpClient) { }
 
