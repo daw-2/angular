@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-register-form',
@@ -11,8 +12,12 @@ export class RegisterFormComponent implements OnInit {
   user = new User();
   userForm: FormGroup;
   passwordForm: FormGroup;
+  errorMessage: string;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AngularFireAuth
+  ) {
     this.passwordForm = fb.group({
       password: fb.control('', Validators.required),
       confirm: fb.control('', Validators.required)
@@ -32,6 +37,13 @@ export class RegisterFormComponent implements OnInit {
     }
 
     console.log(this.user);
+
+    this.authService.auth.createUserWithEmailAndPassword(
+      this.user.username, this.user.password
+    ).then(success => console.log(success))
+     .catch(error => {
+       this.errorMessage = error.message;
+     });
   }
 
   static passwordMatch(group: FormGroup) {

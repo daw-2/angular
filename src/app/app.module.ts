@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppComponent } from './app.component';
 import { PizzaComponent } from './pizza/pizza.component';
@@ -25,6 +27,8 @@ import { FakeApi } from './services/fake-api.service';
 import { AppRoutingModule } from './app-routing.module';
 import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { environment } from 'src/environments/environment';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     DropdownToggleDirective,
     CardComponent,
     IngredientFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +59,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
     // HttpClientInMemoryWebApiModule.forRoot(FakeApi)
   ],
   providers: [],

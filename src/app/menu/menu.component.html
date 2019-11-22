@@ -28,8 +28,14 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/ingredients/create" routerLinkActive="active">Créer un ingrédient</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="!user">
                     <a class="nav-link" routerLink="/register" routerLinkActive="active">Inscription</a>
+                </li>
+                <li class="nav-item" *ngIf="!user">
+                    <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+                </li>
+                <li class="nav-item" *ngIf="user">
+                    <span class="nav-link" (click)="logout()">{{ user }}</span>
                 </li>
             </ul>
         </div>
