@@ -1,1 +1,11 @@
-<p>home works!</p>
+<div>
+    <input type="text" class="form-control" [(ngModel)]="message.user">
+    <input type="text" class="form-control" [(ngModel)]="message.value">
+    <button (click)="send()" class="btn btn-primary">Envoyer</button>
+</div>
+<ul>
+    <li *ngFor="let message of messages">
+        {{ message.user }} : {{ message.value }}
+    </li>
+</ul>
+
