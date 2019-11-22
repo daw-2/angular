@@ -13,6 +13,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { AngularFireAuthGuard, AngularFireAuthGuardModule, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { MyOwnGuard } from './guards/my-own-guard.guard';
 
+const redirect = () => redirectUnauthorizedTo(['login']);
+
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -30,9 +32,9 @@ import { MyOwnGuard } from './guards/my-own-guard.guard';
             {
                 path: 'pizzas/create',
                 component: PizzaFormComponent,
-                canActivate: [MyOwnGuard]
-                // canActivate: [AngularFireAuthGuard],
-                // data: { authGuardPipe: () => redirectUnauthorizedTo(['login']) }
+                // canActivate: [MyOwnGuard]
+                canActivate: [AngularFireAuthGuard],
+                data: { authGuardPipe: redirect }
             },
             { path: 'pizzas/:id', component: PizzaSingleComponent },
             { path: 'ingredients/create', component: IngredientFormComponent },
