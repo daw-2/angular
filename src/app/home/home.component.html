@@ -11,3 +11,48 @@
     </li>
 </ul>
 
+<h1>Accueil</h1>
+<app-pizza [pizza]="selectedPizza"></app-pizza>
+
+<!--
+<input [value]="selectedPizza.name" (keyup)="selectedPizza.name = $event.target.value">
+-->
+
+<h2>Les pizzas</h2>
+
+<input type="range" value="2"
+       step="1"
+       min="1"
+       [max]="pizzas.length"
+       [(ngModel)]="number"
+       *ngIf="pizzas.length > 0">
+<div class="row">
+    <div *ngFor="let pizza of pizzas | slice:0:number"
+        (click)="onSelect(pizza)"
+        class="col-3"
+    >
+        <div class="card" [class.selected]="pizza === selectedPizza">
+            <div class="card-body">
+                <h5 class="card-title">{{ pizza.name }}</h5>
+                <p>Prix HT : {{ pizza.price }}</p>
+                <p>Prix TTC : {{ pizza.price | tax }}</p>
+                <a routerLink="/pizzas/{{ pizza.id }}" class="btn btn-primary">Voir la pizza</a>
+                <span *ngFor="let selectedIngredient of selectedIngredients; index as i"
+                class="badge badge-primary"
+                >
+                {{ selectedIngredient.name }}
+                <span (click)="deleteIngredient(i, $event)">X</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2>Les TPs :</h2>
+<app-author [user]="user"></app-author>
+<app-ingredient-list [ingredients]="ingredients" (select)="selectIngredient($event)"></app-ingredient-list>
+
+<h2>Les pipes</h2>
+<p>{{ 'Hello' | test:'a':'b' }}</p>
+<p>TVA 20% : {{ 10 | tax }}</p>
+<p>TVA 32% : {{ 10 | tax:32 }}</p>

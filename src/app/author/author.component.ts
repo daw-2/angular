@@ -12,4 +12,12 @@ import { User } from '../models/user.model';
 })
 export class AuthorComponent {
     @Input() user: User;
+
+    ngOnInit(): void {
+        console.log('OnInit');
+    }
+    
+    ngOnChanges() {
+        console.log('OnChanges');
+    }
 }

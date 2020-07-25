@@ -1,0 +1,23 @@
+<form (ngSubmit)="register()" [formGroup]="userForm">
+  <div>
+    <label>Username</label>
+    <input name="username" formControlName="username" displayError>
+    <div *ngIf="username.dirty && username.hasError('required')">
+      Username is required
+    </div>
+    <div id="async-status">
+      {{ username.status }}
+    </div>
+  </div>
+  <div>
+    <label>Password</label>
+    <input type="password" name="password" formControlName="password">
+    <div id="custom-error"
+         *ngIf="password.dirty && password.hasError('custom')">
+      {{ password.getError('custom').error }}
+    </div>
+  </div>
+  <button [disabled]="false">Register</button>
+
+  <span *ngIf="result">{{ result.username + ' ' + result.password }}</span>
+</form>

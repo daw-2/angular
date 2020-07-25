@@ -1,0 +1,26 @@
+<app-menu [slogan]="title"></app-menu>
+<input type="text" #search>
+
+<div class="container">
+  <app-messages></app-messages>
+
+  <div class="text-center mt-5" *ngIf="loading">
+    <div class="spinner-border"></div>
+  </div>
+
+  <div *ngIf="!loading">
+    <router-outlet></router-outlet>
+  </div>
+
+  <app-author [user]="user"></app-author>
+
+  <div>
+    <ul>
+      <li *ngFor="let message of messages">
+        {{ message }}
+      </li>
+    </ul>
+    <input type="text" #message>
+    <button (click)="send(message.value)">Envoyer</button>
+  </div>
+</div>

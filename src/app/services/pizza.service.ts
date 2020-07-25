@@ -1,48 +1,44 @@
 import { Injectable } from '@angular/core';
 import { Pizza } from '../models/pizza.model';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
+import { delay, map, switchMap } from 'rxjs/operators';
+import { environment as env } from 'src/environments/environment';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class PizzaService {
-    private url = environment.apiUrl;
+  constructor(private http: HttpClient) {}
 
-    constructor(private http: HttpClient) { }
+  getPizzas(): Observable<Pizza[]> {
+    return this.http.get<Pizza[]>(`${env.apiUrl}/pizzas`);
+  }
 
-    getPizzas(): Promise<Pizza[]> {
-        return this.http.get(this.url + 'pizzas').toPromise().then(
-            response => response as Pizza[]
-        );
-    }
+  getPizzasSlowly(): Observable<Pizza[]> {
+    return this.getPizzas().pipe(
+      delay(1000)
+    );
+  }
 
-    getPizzasSlowly(): Promise<Pizza[]> {
-        return new Promise(resolve => {
-            setTimeout(() => resolve(this.getPizzas()), 500);
-        });
-    }
+  getPizza(id: number): Observable<Pizza> {
+    return this.http.get<Pizza>(`${env.apiUrl}/pizzas/${id}`);
+  }
 
-    // Récupérer une seule pizza
-    getPizza(id: number): Promise<Pizza> {
-        return this.http.get(this.url + 'pizzas/' + id).toPromise().then(
-            response => response as Pizza
-        );
-    }
+  createPizza(pizza: Pizza): Observable<Pizza> {
+    return this.http.post<Pizza>(`${env.apiUrl}/pizzas`, pizza);
+  }
 
-    update(pizza: Pizza) {
-        return this.http.put(this.url + 'pizzas/' + pizza.id, pizza).toPromise().then(
-            () => pizza
-        );
-    }
+  updatePizza(pizza: Pizza): Observable<Pizza> {
+    return this.http.patch<Pizza>(`${env.apiUrl}/pizzas/${pizza.id}`, pizza);
+  }
 
-    create(pizza: Pizza) {
-        return this.http.post(this.url + 'pizzas', pizza).toPromise().then(
-            response => response as Pizza
-        );
-    }
-
-    delete(id: number) {
-        return this.http.delete(this.url + 'pizzas/' + id).toPromise();
-    }
+  deletePizza(id: number): Observable<Pizza[]> {
+    return this.http
+      .delete<Pizza[]>(`${env.apiUrl}/pizzas/${id}`)
+      .pipe(
+        switchMap(() => this.getPizzas())
+      )
+    ;
+  }
 }

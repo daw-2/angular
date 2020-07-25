@@ -1,47 +1,50 @@
-<!--
-<form (ngSubmit)="save(pizzaForm.value)" #pizzaForm="ngForm">
--->
-<form (ngSubmit)="save()" #pizzaForm="ngForm">
+<form #pizzaForm="ngForm">
     <div class="form-group">
-        <label for="name">Nom</label>
-        <input type="text"
-               class="form-control"
-               name="name"
-               [(ngModel)]="pizza.name"
-               #name="ngModel"
-               required
-               minlength="3"
-               [class.is-invalid]="name.dirty && name.invalid">
-        <div *ngIf="name.dirty && name.hasError('required')"
-             class="invalid-feedback"
-        >
-            Le nom est obligatoire.
-        </div>
-        <div *ngIf="name.dirty && name.hasError('minlength')"
-             class="invalid-feedback"
-        >
-            Le nom doit faire 3 caractères.
-        </div>
+      <label for="name">Nom</label>
+      <input type="text" class="form-control" id="name"
+            required minlength="3"
+            name="name"
+            #name="ngModel"
+            [class.is-invalid]="name.dirty && name.invalid"
+            [(ngModel)]="pizza.name">
+      <div *ngIf="name.dirty && name.hasError('minlength')"
+           class="invalid-feedback"
+       >
+         Le nom doit faire 3 caractères
+       </div>
     </div>
-
+  
+    <div>
+      {{ name.value }}
+      {{ name.getError('minlength') | json }}
+    </div>
+  
     <div class="form-group">
-        <label for="price">Prix</label>
-        <input type="number"
-               class="form-control"
-               name="price"
-               [(ngModel)]="pizza.price"
-               #price="ngModel"
-               required
-               [class.is-invalid]="price.dirty && price.invalid">
-        <div *ngIf="price.dirty && price.hasError('required')"
-               class="invalid-feedback"
-          >
-            Le prix est obligatoire.
-        </div>
+      <label for="price">Prix</label>
+      <input type="text" class="form-control" id="price"
+            required pattern="[0-9 ]*"
+            name="price"
+            #price="ngModel"
+            [class.is-invalid]="price.dirty && price.invalid"
+            [(ngModel)]="pizza.price">
     </div>
-
+  
     <button class="btn btn-primary"
-        [disabled]="pizzaForm.invalid">
-        Créer la pizza
+            (click)="save()"
+            [disabled]="busy || pizzaForm.invalid"
+            *ngIf="!ended && !editing">
+      <i class="spinner-border" *ngIf="busy"
+        style="width: 1rem; height: 1rem;"></i>
+      Ajouter
     </button>
-</form>
+  
+    <button class="btn btn-primary"
+            (click)="update()"
+            [disabled]="busy || pizzaForm.invalid"
+            *ngIf="!ended && editing">
+      <i class="spinner-border" *ngIf="busy"
+      style="width: 1rem; height: 1rem;"></i>
+      Modifier
+    </button>
+  </form>
+  
