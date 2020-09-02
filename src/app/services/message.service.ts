@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Message } from '../models/message';
+import { Message, MessageType } from '../models/message';
 
 @Injectable({
     providedIn: 'root'
@@ -11,8 +11,8 @@ export class MessageService {
         return Promise.resolve(this.messages);
     }
 
-    addMessage(value: string, type: string = 'success') {
-        this.messages.push({value, type});
+    addMessage(content: string, type: MessageType = 'success') {
+        this.messages.push({content, type});
     }
 
     deleteMessage(message: Message) {
