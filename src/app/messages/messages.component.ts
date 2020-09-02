@@ -8,7 +8,7 @@ import { Message } from '../models/message';
     <div [class]="'alert alert-' + message.type"
          *ngFor="let message of messages"
         >
-        {{ message.value }}
+        {{ message.content }}
         <button class="close" (click)="messageService.deleteMessage(message)">&times;</button>
     </div>
     `
