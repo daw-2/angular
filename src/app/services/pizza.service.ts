@@ -26,11 +26,15 @@ export class PizzaService {
   }
 
   createPizza(pizza: Pizza): Observable<Pizza> {
-    return this.http.post<Pizza>(`${env.apiUrl}/pizzas`, pizza);
+    return this.http.post<Pizza>(`${env.apiUrl}/pizzas`, pizza, {withCredentials: true});
   }
 
   updatePizza(pizza: Pizza): Observable<Pizza> {
-    return this.http.patch<Pizza>(`${env.apiUrl}/pizzas/${pizza.id}`, pizza);
+    return this.http.put<Pizza>(`${env.apiUrl}/pizzas/${pizza.id}`, pizza);
+  }
+
+  searchPizza(search: string): Observable<Pizza[]> {
+    return this.http.get<Pizza[]>(`${env.apiUrl}/pizza?q=${search}`);
   }
 
   deletePizza(id: number): Observable<Pizza[]> {

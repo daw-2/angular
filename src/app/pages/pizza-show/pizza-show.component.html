@@ -1,0 +1,8 @@
+<div *ngIf="pizza">
+    <a routerLink="/pizzas">Retour à la liste</a>
+    <!-- <app-card> -->
+        <h1 class="text-2xl">{{ pizza.name }}</h1>
+    <!-- </app-card> -->
+    <a [routerLink]="['/pizza', pizza.id - 1]"><-- Pizza précédente</a>
+    <a [routerLink]="['/pizza', pizza.id + 1]">Pizza suivante --></a>
+</div>

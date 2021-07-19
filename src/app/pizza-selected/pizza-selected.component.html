@@ -1,0 +1,20 @@
+<div *ngIf="selectedPizza">
+  <h2 class="text-center text-2xl text-indigo-500">{{ selectedPizza?.name | uppercase | lowercase }}</h2>
+  <!-- <h2 [innerHtml]="selectedPizza.name"></h2> -->
+  <p>Id: {{ selectedPizza.id }}</p>
+  <p [title]="selectedPizza.name">Price: {{ selectedPizza.price | tax }}</p>
+  <p>Date: {{ '2021-06-22 14:14:45' | date:'full':'+500' }}</p>
+
+  <ul>
+    <li *ngFor="let ingredient of selectedPizza.ingredients">
+      {{ ingredient.name }}
+    </li>
+  </ul>
+
+  <input type="text" [(ngModel)]="selectedPizza.name">
+  <input type="text" #price [value]="selectedPizza.price" (input)="selectedPizza.price = price.value">
+  <button (click)="save()">Mettre à jour</button>
+
+  <app-errors [errors]="errors"></app-errors>
+  <p *ngIf="edited">La pizza a été modifiée</p>
+</div>

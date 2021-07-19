@@ -1,0 +1,18 @@
+<form (ngSubmit)="login(userForm)" #userForm="ngForm">
+  <div>
+    <label>Email</label>
+    <input type="email" name="email" ngModel required email #email="ngModel">
+    <div *ngIf="email.dirty && email.invalid" class="text-red-600">
+        L'email est invalide.
+    </div>
+  </div>
+  <div>
+    <label>Mot de passe</label>
+    <input type="password" name="password" ngModel required>
+  </div>
+  <button [disabled]="userForm.invalid"
+    class="px-4 py-2 text-white bg-indigo-500 hover:bg-indigo-600 rounded-lg"
+    [class.opacity-50]="userForm.invalid">
+    Connexion
+  </button>
+</form>

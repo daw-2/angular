@@ -1,0 +1,10 @@
+<div *ngIf="errors">
+    <h2 class="text-lg text-red-600">Oups! Il y a des erreurs</h2>
+    <ul class="text-red-600">
+        <li *ngFor="let name of objectKeys(errors)">
+            <p *ngFor="let error of errors[name]">
+                - {{ error }}
+            </p>
+        </li>
+    </ul>
+</div>

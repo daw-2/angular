@@ -4,4 +4,5 @@ export interface Ingredient {
     image: string;
     weight: number;
     price: number;
+    isSelected?: boolean;
 }

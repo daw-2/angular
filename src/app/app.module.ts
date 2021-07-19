@@ -67,7 +67,13 @@ import { CounterComponent } from './counter/counter.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     // HttpClientInMemoryWebApiModule.forRoot(FakeApi)
   ],
-  providers: [],
+  providers: [
+    /* { provide: PizzaService, useValue: {
+      getPizzasSlowly: function () {
+        return Promise.resolve([1, 2, 3]);
+      }
+    } } */
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

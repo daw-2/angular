@@ -1,15 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'tax'
+  name: 'tax'
 })
 export class TaxPipe implements PipeTransform {
-    // {{ 10 | tax:10 }}
-    transform(value: any, ...args: any[]) {
-        let tax = args[0] || 20;
-        value = value * (1 + tax / 100);
-        value = value.toFixed(2).replace('.', ',');
 
-        return value + ' €';
-    }
+  transform(value: number, ...args: number[]): string {
+    let numberFormat = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' });
+    let tax = args[0] || 20;
+    let valueWithTax = value * (1 + tax / 100);
+
+    return numberFormat.format(valueWithTax);
+  }
+
 }
